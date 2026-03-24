@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Formativa: Experiencias Activas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .option-btn {
+            transition: all 0.2s;
+        }
+        .option-btn.selected {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden relative">
+        
+        <!-- Header -->
+        <div class="bg-blue-600 p-6 text-white">
+            <h1 class="text-2xl font-bold flex items-center gap-3">
+                <i class="fas fa-graduation-cap text-3xl"></i>
+                Auditor de Experiencias Activas
+            </h1>
+            <p class="mt-2 text-blue-100 text-sm">Actividad formativa basada en el Módulo 1: Componentes y Alineación</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 h-2">
+            <div id="progress-bar" class="bg-green-500 h-2 transition-all duration-500 w-0"></div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-6 md:p-8 min-h-[400px]">
+            
+            <!-- Pantalla de Inicio -->
+            <div id="screen-intro" class="fade-in text-center py-8">
+                <div class="bg-blue-50 text-blue-800 p-4 rounded-lg inline-block mb-6">
+                    <i class="fas fa-lightbulb text-4xl mb-2"></i>
+                    <h2 class="font-bold text-lg">Demuestra lo aprendido</h2>
+                </div>
+                <p class="text-gray-600 mb-8 max-w-lg mx-auto">
+                    Aprender implica actuar con idoneidad. En esta actividad pondrás a prueba tu comprensión sobre el <strong>Modelo RARE</strong>, la diferencia entre <strong>desempeño y actividad</strong>, y la <strong>alineación metodológica</strong>.
+                </p>
+                <button onclick="startActivity()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                    Comenzar Actividad <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+            <!-- Fase 1: Modelo RARE -->
+            <div id="screen-fase1" class="hidden fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Fase 1 de 3</span>
+                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-bold">El Modelo RARE</span>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800 mb-4">El impacto de los componentes RARE</h2>
+                <p class="text-gray-600 mb-6 text-sm">Selecciona el concepto correcto para completar la secuencia lógica de una experiencia activa. ¿Qué pasa cuando falta un elemento?</p>
+
+                <div class="space-y-4 text-gray-700">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span>1. Sin</span>
+                        <select id="r1" class="border border-gray-300 rounded p-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">[Seleccionar]</option>
+                            <option value="reto">Reto</option>
+                            <option value="accion">Acción</option>
+                            <option value="reflexion">Reflexión</option>
+                            <option value="evidencia">Evidencia</option>
+                        </select>
+                        <span>hay actividad sin propósito.</span>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span>2. Sin</span>
+                        <select id="r2" class="border border-gray-300 rounded p-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">[Seleccionar]</option>
+                            <option value="reto">Reto</option>
+                            <option value="accion">Acción</option>
+                            <option value="reflexion">Reflexión</option>
+                            <option value="evidencia">Evidencia</option>
+                        </select>
+                        <span>hay teoría sin aplicación.</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span>3. Sin</span>
+                        <select id="r3" class="border border-gray-300 rounded p-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">[Seleccionar]</option>
+                            <option value="reto">Reto</option>
+                            <option value="accion">Acción</option>
+                            <option value="reflexion">Reflexión</option>
+                            <option value="evidencia">Evidencia</option>
+                        </select>
+                        <span>hay experiencia sin aprendizaje (no hay aprendizaje profundo).</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span>4. Sin</span>
+                        <select id="r4" class="border border-gray-300 rounded p-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">[Seleccionar]</option>
+                            <option value="reto">Reto</option>
+                            <option value="accion">Acción</option>
+                            <option value="reflexion">Reflexión</option>
+                            <option value="evidencia">Evidencia</option>
+                        </select>
+                        <span>no hay evaluación auténtica verificable.</span>
+                    </div>
+                </div>
+
+                <div id="feedback-fase1" class="mt-4 hidden p-4 rounded-lg text-sm"></div>
+
+                <div class="mt-8 flex justify-end">
+                    <button id="btn-fase1" onclick="checkFase1()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        Verificar Respuestas
+                    </button>
+                    <button id="btn-next1" onclick="nextPhase(2)" class="hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        Siguiente Fase <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fase 2: Clasificador -->
+            <div id="screen-fase2" class="hidden fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Fase 2 de 3</span>
+                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-bold">Conceptos</span>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800 mb-2">¿Actividad o Desempeño Observable?</h2>
+                <p class="text-gray-600 mb-6 text-sm">Un error común es confundir el <em>medio</em> (actividad) con lo que se espera <em>demostrar</em> (desempeño). Clasifica los siguientes enunciados.</p>
+
+                <div class="grid gap-4" id="clasificador-container">
+                    <!-- Items generated by JS -->
+                </div>
+
+                <div id="feedback-fase2" class="mt-6 hidden p-4 rounded-lg text-sm">
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button id="btn-fase2" onclick="checkFase2()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        Verificar Clasificación
+                    </button>
+                    <button id="btn-next2" onclick="nextPhase(3)" class="hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        Siguiente Fase <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fase 3: Casos Reales -->
+            <div id="screen-fase3" class="hidden fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Fase 3 de 3</span>
+                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-bold">Análisis de Casos</span>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800 mb-4">El diagnóstico del docente</h2>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-r">
+                    <h3 class="font-bold text-yellow-800 text-sm mb-1">Caso de Estudio:</h3>
+                    <p class="text-gray-700 text-sm italic">"El profesor Martín ha diseñado un juego estilo 'Escape Room' digital muy atractivo para sus alumnos de administración. Los alumnos participan entusiasmados, se divierten mucho y el dinamismo de la clase es alto. Sin embargo, al finalizar, no hay una competencia definida, los estudiantes no producen ninguna evidencia evaluable y el profesor lo justifica diciendo que 'lo importante es la motivación'."</p>
+                </div>
+
+                <p class="font-bold text-gray-800 mb-3">Según el Módulo 1, ¿qué error metodológico presenta este caso?</p>
+                
+                <div class="space-y-3" id="mcq-container">
+                    <button onclick="selectMCQ(this, false)" class="w-full text-left p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition option-mcq">
+                        A) Falta de alineación metodológica (la evaluación no coincide con la actividad).
+                    </button>
+                    <button onclick="selectMCQ(this, true)" class="w-full text-left p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition option-mcq">
+                        B) Es el espejismo de la innovación (actividad atractiva sin propósito competencial).
+                    </button>
+                    <button onclick="selectMCQ(this, false)" class="w-full text-left p-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition option-mcq">
+                        C) Falta de desequilibrio cognitivo en el Reto.
+                    </button>
+                </div>
+
+                <div id="feedback-fase3" class="mt-6 hidden p-4 rounded-lg text-sm"></div>
+
+                <div class="mt-8 flex justify-end">
+                    <button id="btn-fase3" onclick="checkFase3()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow transition disabled:opacity-50" disabled>
+                        Confirmar Diagnóstico
+                    </button>
+                    <button id="btn-next3" onclick="showResults()" class="hidden bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        Ver Resultados <i class="fas fa-flag-checkered ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pantalla de Resultados -->
+            <div id="screen-results" class="hidden fade-in text-center py-8">
+                <i class="fas fa-trophy text-6xl text-yellow-400 mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">¡Actividad Completada!</h2>
+                <p class="text-gray-600 mb-6">Has demostrado comprensión sobre el diseño intencional de experiencias activas.</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg text-left max-w-lg mx-auto mb-8">
+                    <h3 class="font-bold text-blue-800 mb-2">Recuerda tus conclusiones de hoy:</h3>
+                    <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
+                        <li>El modelo <strong>RARE</strong> (Reto, Acción, Reflexión, Evidencia) garantiza coherencia y evita actividades desarticuladas.</li>
+                        <li>Una <strong>actividad</strong> es el medio, mientras que el <strong>desempeño</strong> es la demostración observable de la competencia.</li>
+                        <li>La innovación por sí sola es un <strong>espejismo</strong> si no moviliza un desempeño ni produce evidencia evaluable.</li>
+                    </ul>
+                </div>
+
+                <button onclick="location.reload()" class="text-blue-600 font-bold hover:underline">
+                    <i class="fas fa-redo mr-1"></i> Reiniciar Actividad
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // State variables
+        let score = 0;
+        let fase2Data = [
+            { id: 1, text: "Realizar un foro en la plataforma", type: "actividad", selected: null },
+            { id: 2, text: "Argumenta una postura fundamentada en evidencias teóricas frente a un problema", type: "desempeno", selected: null },
+            { id: 3, text: "Jugar un Kahoot sobre conceptos", type: "actividad", selected: null },
+            { id: 4, text: "Diseña una propuesta didáctica con metodología activa", type: "desempeno", selected: null }
+        ];
+        let mcqSelected = null;
+        let isMcqCorrect = false;
+
+        // Start Activity
+        function startActivity() {
+            document.getElementById('screen-intro').classList.add('hidden');
+            document.getElementById('screen-fase1').classList.remove('hidden');
+            updateProgress(10);
+        }
+
+        function updateProgress(percentage) {
+            document.getElementById('progress-bar').style.width = percentage + '%';
+        }
+
+        // Phase 1 Logic
+        function checkFase1() {
+            let r1 = document.getElementById('r1').value;
+            let r2 = document.getElementById('r2').value;
+            let r3 = document.getElementById('r3').value;
+            let r4 = document.getElementById('r4').value;
+            let feedback = document.getElementById('feedback-fase1');
+
+            if(!r1 || !r2 || !r3 || !r4) {
+                feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, selecciona una opción en todas las frases.';
+                feedback.className = "mt-4 p-4 rounded-lg text-sm bg-yellow-100 text-yellow-800";
+                feedback.classList.remove('hidden');
+                return;
+            }
+
+            if(r1 === 'reto' && r2 === 'accion' && r3 === 'reflexion' && r4 === 'evidencia') {
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> <strong>¡Correcto!</strong> Has completado la estructura RARE a la perfección. Recuerda: esta secuencia garantiza coherencia pedagógica.';
+                feedback.className = "mt-4 p-4 rounded-lg text-sm bg-green-100 text-green-800 border-l-4 border-green-500";
+                
+                // Block inputs
+                document.querySelectorAll('#screen-fase1 select').forEach(s => s.disabled = true);
+                
+                document.getElementById('btn-fase1').classList.add('hidden');
+                document.getElementById('btn-next1').classList.remove('hidden');
+                updateProgress(33);
+            } else {
+                feedback.innerHTML = '<i class="fas fa-times-circle"></i> <strong>Hay algunos errores.</strong> Pista: Piensa lógicamente. El "Reto" da propósito, la "Acción" aplica la teoría, la "Reflexión" genera aprendizaje y la "Evidencia" permite evaluar.';
+                feedback.className = "mt-4 p-4 rounded-lg text-sm bg-red-100 text-red-800 border-l-4 border-red-500";
+            }
+            feedback.classList.remove('hidden');
+        }
+
+        function nextPhase(phase) {
+            document.querySelectorAll('[id^="screen-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById('screen-fase' + phase).classList.remove('hidden');
+            
+            if(phase === 2) {
+                renderFase2();
+                updateProgress(40);
+            } else if (phase === 3) {
+                updateProgress(66);
+            }
+        }
+
+        // Phase 2 Logic
+        function renderFase2() {
+            const container = document.getElementById('clasificador-container');
+            container.innerHTML = '';
+            fase2Data.forEach(item => {
+                container.innerHTML += `
+                    <div id="fase2-row-${item.id}" class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors duration-300">
+                        <div class="text-gray-700 text-sm font-medium">"${item.text}"</div>
+                        <div class="flex gap-2 shrink-0">
+                            <button onclick="selectClass(${item.id}, 'actividad')" id="btn-act-${item.id}" class="option-btn border border-gray-300 text-gray-600 px-3 py-1 rounded text-xs font-bold hover:bg-gray-50">Actividad</button>
+                            <button onclick="selectClass(${item.id}, 'desempeno')" id="btn-des-${item.id}" class="option-btn border border-gray-300 text-gray-600 px-3 py-1 rounded text-xs font-bold hover:bg-gray-50">Desempeño</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function selectClass(id, selection) {
+            // Update state
+            const item = fase2Data.find(i => i.id === id);
+            item.selected = selection;
+
+            // Update UI
+            document.getElementById(`btn-act-${id}`).classList.remove('selected', 'bg-blue-600', 'text-white', 'border-blue-600');
+            document.getElementById(`btn-des-${id}`).classList.remove('selected', 'bg-blue-600', 'text-white', 'border-blue-600');
+            
+            const activeBtn = selection === 'actividad' ? `btn-act-${id}` : `btn-des-${id}`;
+            const btn = document.getElementById(activeBtn);
+            btn.classList.add('selected', 'bg-blue-600', 'text-white', 'border-blue-600');
+            
+            // Si el usuario cambia su respuesta después de un error, restauramos el color original de la fila
+            const parentRow = document.getElementById(`fase2-row-${id}`);
+            if (parentRow) {
+                parentRow.classList.remove('bg-red-50', 'border-red-400', 'bg-green-50', 'border-green-400');
+                parentRow.classList.add('bg-white', 'border-gray-200');
+            }
+        }
+
+        function checkFase2() {
+            const feedback = document.getElementById('feedback-fase2');
+            const unanswered = fase2Data.some(i => i.selected === null);
+            
+            if(unanswered) {
+                feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, clasifica todos los enunciados antes de verificar.';
+                feedback.className = "mt-6 p-4 rounded-lg text-sm bg-yellow-100 text-yellow-800";
+                return;
+            }
+
+            let allCorrect = true;
+            fase2Data.forEach(item => {
+                const parentDiv = document.getElementById(`fase2-row-${item.id}`);
+                
+                // Limpiamos los estados previos para que no haya conflictos de clases CSS
+                parentDiv.classList.remove('bg-white', 'border-gray-200', 'bg-red-50', 'border-red-400', 'bg-green-50', 'border-green-400');
+                
+                if(item.selected === item.type) {
+                    parentDiv.classList.add('border-green-400', 'bg-green-50');
+                } else {
+                    allCorrect = false;
+                    parentDiv.classList.add('border-red-400', 'bg-red-50');
+                }
+            });
+
+            if(allCorrect) {
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> <strong>¡Excelente diferenciación!</strong> Recuerda que la actividad es solo el medio. El desempeño es la acción concreta (como argumentar o diseñar) que demuestra que la competencia se movilizó de forma idónea en un contexto.';
+                feedback.className = "mt-6 p-4 rounded-lg text-sm bg-green-100 text-green-800 border-l-4 border-green-500";
+                
+                document.getElementById('btn-fase2').classList.add('hidden');
+                document.getElementById('btn-next2').classList.remove('hidden');
+                updateProgress(66);
+                
+                // Disable buttons to prevent further clicks
+                document.querySelectorAll('#screen-fase2 .option-btn').forEach(b => b.disabled = true);
+            } else {
+                feedback.innerHTML = '<i class="fas fa-times-circle"></i> <strong>Hay errores.</strong> Algunas clasificaciones son incorrectas. Recuerda: el desempeño describe la acción y movilización, la actividad es solo la tarea (el medio).';
+                feedback.className = "mt-6 p-4 rounded-lg text-sm bg-red-100 text-red-800 border-l-4 border-red-500";
+            }
+        }
+
+        // Phase 3 Logic
+        function selectMCQ(element, isCorrect) {
+            // Reset others
+            document.querySelectorAll('.option-mcq').forEach(btn => {
+                btn.classList.remove('bg-blue-100', 'border-blue-500');
+            });
+            
+            // Select current
+            element.classList.add('bg-blue-100', 'border-blue-500');
+            mcqSelected = element;
+            isMcqCorrect = isCorrect;
+            
+            // Enable button
+            document.getElementById('btn-fase3').disabled = false;
+        }
+
+        function checkFase3() {
+            let feedback = document.getElementById('feedback-fase3');
+            
+            if(isMcqCorrect) {
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> <strong>¡Exactamente!</strong> Estás frente al "Espejismo de la innovación". Según el documento, una actividad carece de propósito cuando se justifica solo por dinamismo o motivación, pero no movila un desempeño ni produce evidencia evaluable.';
+                feedback.className = "mt-4 p-4 rounded-lg text-sm bg-green-100 text-green-800 border-l-4 border-green-500";
+                
+                document.getElementById('btn-fase3').classList.add('hidden');
+                document.getElementById('btn-next3').classList.remove('hidden');
+                
+                // Highlight correct option permanently
+                mcqSelected.classList.replace('bg-blue-100', 'bg-green-100');
+                mcqSelected.classList.replace('border-blue-500', 'border-green-500');
+                
+                // Disable all options
+                document.querySelectorAll('.option-mcq').forEach(btn => btn.disabled = true);
+                updateProgress(90);
+            } else {
+                feedback.innerHTML = '<i class="fas fa-times-circle"></i> <strong>Incorrecto.</strong> Revisa bien el caso: el profesor tiene una actividad atractiva, pero sin competencia ni evaluación. Revisa el Microaprendizaje 4 del documento.';
+                feedback.className = "mt-4 p-4 rounded-lg text-sm bg-red-100 text-red-800 border-l-4 border-red-500";
+                mcqSelected.classList.replace('bg-blue-100', 'bg-red-50');
+                mcqSelected.classList.replace('border-blue-500', 'border-red-400');
+            }
+            feedback.classList.remove('hidden');
+        }
+
+        function showResults() {
+            document.getElementById('screen-fase3').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+            updateProgress(100);
+        }
+    </script>
+</body>
+</html>
